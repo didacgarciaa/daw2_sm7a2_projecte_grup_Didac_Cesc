@@ -43,6 +43,7 @@
                                         <a href="{{ route('equips.pdf', $equip->identificador) }}" class="btn btn-sm btn-primary">PDF</a>
                                     @else
                                         <a href="{{ route('consultor.equips.show', $equip->identificador) }}" class="btn btn-sm btn-info">Veure</a>
+                                        <a href="{{ route('equips.pdf', $equip->identificador) }}" class="btn btn-sm btn-primary">PDF</a>
                                     @endif
                                 </td>
                             </tr>
