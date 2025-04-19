@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Equip;
 use Illuminate\Http\Request;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class EquipController extends Controller
 {
     public function index()
@@ -52,6 +52,14 @@ class EquipController extends Controller
         return redirect()->route('equips.index')->with('success', 'Equip actualitzat correctament.');
     }
 
+    public function pdf($id)
+    {
+        $equip = Equip::with('jugadors')->findOrFail($id);
+    
+        $pdf = Pdf::loadView('equips.pdf', compact('equip'));
+        return $pdf->download('equip_' . $equip->identificador . '.pdf');
+    }
+    
     public function destroy(Equip $equip)
     {
         $equip->delete();
