@@ -40,6 +40,7 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Estàs segur que vols eliminar aquest equip?')">Eliminar</button>
                                         </form>
+                                        <a href="{{ route('equips.pdf', $equip->identificador) }}" class="btn btn-sm btn-primary">PDF</a>
                                     @else
                                         <a href="{{ route('consultor.equips.show', $equip->identificador) }}" class="btn btn-sm btn-info">Veure</a>
                                     @endif
