@@ -63,10 +63,12 @@ class JugadorController extends Controller
         return redirect()->route('jugadors.index')->with('success', 'Jugador actualitzat correctament.');
     }
 
-    public function pdf(Jugador $jugador)
+    public function pdf($id)
     {
+        $jugador = Jugador::with('equip')->findOrFail($id);
+
         $pdf = Pdf::loadView('jugadors.pdf', compact('jugador'));
-        return $pdf->download('jugador_' . $jugador->identificador . '.pdf');
+        return $pdf->download("jugador_{$jugador->identificador}.pdf");
     }
 
     public function destroy(Jugador $jugador)
