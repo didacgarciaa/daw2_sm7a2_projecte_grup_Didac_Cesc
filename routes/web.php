@@ -44,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
         
         // Read-only access to Equips and Jugadors
         Route::get('/consultor/equips', [EquipController::class, 'index'])->name('consultor.equips.index');
-        Route::get('/consultor/equips', [EquipController::class, 'pdf'])->name('consultor.equips.pdf');
+        Route::get('/consultor/equips/{equip}/pdf', [EquipController::class, 'pdf'])->name('consultor.equips.pdf');
         Route::get('/consultor/equips/{equip}', [EquipController::class, 'show'])->name('consultor.equips.show');
         
         Route::get('/consultor/jugadors', [JugadorController::class, 'index'])->name('consultor.jugadors.index');
