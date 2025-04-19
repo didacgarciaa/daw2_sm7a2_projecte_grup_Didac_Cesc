@@ -73,11 +73,12 @@
             <span class="label">Telèfon:</span> {{ $jugador->telefon }}
         </div>
 
-        @if($jugador->equip)
-        <div class="info-item">
-            <span class="label">Equip:</span> {{ $jugador->equip->nom }}
-        </div>
+        @if($jugador->equip && is_object($jugador->equip))
+            <div class="info-item">
+                <span class="label">Equip:</span> {{ $jugador->equip->nom }}
+            </div>
         @endif
+
     </div>
 
     <div class="footer">
