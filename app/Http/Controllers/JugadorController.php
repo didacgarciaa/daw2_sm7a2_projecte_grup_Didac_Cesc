@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jugador;
 use App\Models\Equip;
 use Illuminate\Http\Request;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class JugadorController extends Controller
 {
     public function index()
@@ -61,6 +61,12 @@ class JugadorController extends Controller
 
         $jugador->update($request->all());
         return redirect()->route('jugadors.index')->with('success', 'Jugador actualitzat correctament.');
+    }
+
+    public function pdf(Jugador $jugador)
+    {
+        $pdf = Pdf::loadView('jugadors.pdf', compact('jugador'));
+        return $pdf->download('jugador_' . $jugador->identificador . '.pdf');
     }
 
     public function destroy(Jugador $jugador)

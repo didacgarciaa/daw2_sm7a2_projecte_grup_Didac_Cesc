@@ -42,8 +42,10 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Estàs segur que vols eliminar aquest jugador?')">Eliminar</button>
                                         </form>
+                                        <a href="{{ route('jugadors.pdf', $jugador->identificador) }}" class="btn btn-sm btn-primary">PDF</a>
                                     @else
                                         <a href="{{ route('consultor.jugadors.show', $jugador->identificador) }}" class="btn btn-sm btn-info">Veure</a>
+                                        <a href="{{ route('jugadors.pdf', $jugador->identificador) }}" class="btn btn-sm btn-primary">PDF</a>
                                     @endif
                                 </td>
                             </tr>

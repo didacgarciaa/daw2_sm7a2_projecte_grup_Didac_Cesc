@@ -36,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('jugadors', JugadorController::class);
     });
     Route::get('/equips/{equip}/pdf', [EquipController::class, 'pdf'])->name('equips.pdf');
+    Route::get('/jugadors/{jugador}/pdf', [JugadorController::class, 'pdf'])->name('jugadors.pdf');
     // Consultor routes
     Route::middleware(['ConsultorAuth'])->group(function () {
         Route::get('/consultor', function () {
